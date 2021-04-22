@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import React from "react";
-import ParticlesBackground from "../components/particles/particles-background";
+import { Zoom } from "react-reveal";
 import Timer from "../components/ui/timer";
 
 function Index() {
@@ -22,12 +22,15 @@ function Index() {
           <Grid item xs={12} className="text-center">
             <Typography
               style={{
-                fontFamily: "Kiwi Maru",
-                fontSize: mdBelow ? "27px" : "64px",
+                fontFamily: "Poppins",
+                fontWeight: "100",
+                fontSize: mdBelow ? "30px" : "64px",
                 color: "#fff",
               }}
             >
-              FICTIONARY STARTS IN
+              <Zoom right cascade>
+                FICTIONARY STARTS IN
+              </Zoom>
             </Typography>
           </Grid>
           <Grid item>

@@ -2,7 +2,7 @@ import { CssBaseline, makeStyles, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import Footer from "./footer";
 import Navbar from "./navbar";
-import ParticlesBackground from "./particles/particles-background";
+
 import Head from "next/head";
 import Theme from "./theme/theme";
 function Layout({ children }) {
@@ -17,18 +17,25 @@ function Layout({ children }) {
         ></link>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=New+Tegomin&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap"
           rel="stylesheet"
         />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap"
           rel="stylesheet"
         ></link>
       </Head>
       <CssBaseline />
+      <div className="my-video">
+        <video autoPlay loop muted style={{ height: "900px" }}>
+          <source
+            src="/production Id 4112431 (Online-Video-Cutter.Com)-1.webm"
+            type="video/webm"
+          />
+        </video>
+      </div>
       <ThemeProvider theme={Theme}>
-        <ParticlesBackground />
-
         <Navbar />
 
         {children}

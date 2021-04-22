@@ -15,6 +15,7 @@ import {
   IconButton,
   Drawer,
   ListItemIcon,
+  Divider,
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -23,24 +24,32 @@ import GavelIcon from "@material-ui/icons/Gavel";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import SchoolIcon from "@material-ui/icons/School";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import Link from "next/link";
+import { Bounce, Flip } from "react-reveal";
+import HomeIcon from "@material-ui/icons/Home";
 const useStyles = makeStyles((theme) => ({
   root: {
     background: "transparent",
-    // background:
-    //   "linear-gradient(  90deg,  rgba(0, 0, 0, 1) 20%,  rgba(8, 45, 50, 1) 72%,  rgba(30, 50, 54, 1) 100%)",
   },
   tabIndicator: {
     backgroundColor: "#fff",
   },
   tabs: {
     marginLeft: "auto",
-    marginRight: "auto",
+    "& .MuiTab-wrapper": {
+      fontFamily: "Poppins",
+      fontWeight: "400",
+      fontSize: "20px",
+    },
   },
   drawerRoot: {
     "& .MuiPaper-root": {
-      background: "white",
+      background: "rgba(0 0 0 / 53%)",
 
-      color: "black",
+      color: "#fff",
+    },
+    "& .MuiSvgIcon-root": {
+      color: "#fff",
     },
   },
 }));
@@ -50,29 +59,60 @@ const Navbar = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
   const classes = useStyles();
+  const route = useRouter();
 
+  useEffect(() => {
+    switch (route.pathname) {
+      case "/":
+        setValue(0);
+        break;
+      case "/game":
+        setValue(2);
+        break;
+
+      default:
+        setValue(0);
+    }
+  }, [route.pathname]);
   return (
     <>
       <Hidden smDown>
-        <AppBar elevation={0} className={classes.root} position="static">
+        <AppBar elevation={0} className={classes.root} position="sticky">
           <Toolbar>
-            <Typography variant="h4" style={{ fontFamily: "Dancing Script" }}>
-              FICTIONARY
+            <Typography variant="subtitle1">
+              <Flip right cascade>
+                Fictionary
+              </Flip>
             </Typography>
+
             <Tabs
               value={value}
               className={classes.tabs}
               classes={{ indicator: classes.tabIndicator }}
             >
+              <Link href="/">
+                <Tab
+                  label="HOME"
+                  onClick={() => {
+                    setValue(0);
+                  }}
+                />
+              </Link>
+
               <Tab
                 label="RULES"
                 onClick={() => {
-                  setValue(0);
+                  setValue(1);
                   setOpenDialog(!openDialog);
                 }}
               />
-              <Tab label="GAME" onClick={() => setValue(1)} />
-              <Tab label="LEADERBOARD" onClick={() => setValue(2)} />
+
+              <Link href="/game">
+                <Tab label="GAME" onClick={() => setValue(2)} />
+              </Link>
+              <Link href="/test">
+                <Tab label="LEADERBOARD" onClick={() => setValue(3)} />
+              </Link>
             </Tabs>
             <Button variant="contained" color="secondary">
               LOG OUT
@@ -86,8 +126,10 @@ const Navbar = () => {
             <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
               <MenuIcon style={{ color: "#ffff" }} />
             </IconButton>
-            <Typography variant="h4" style={{ fontFamily: "Dancing Script" }}>
-              FICTIONARY
+            <Typography variant="subtitle2">
+              <Flip right cascade>
+                Fictionary
+              </Flip>
             </Typography>
           </Toolbar>
         </AppBar>
@@ -97,18 +139,28 @@ const Navbar = () => {
           className={classes.drawerRoot}
         >
           <List>
-            <ListItem button selected={value == 0}>
+            <Link href="/">
+              <ListItem button selected={value == 0}>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItem>
+            </Link>
+            <ListItem button selected={value == 1}>
               <ListItemIcon>
                 <GavelIcon />
               </ListItemIcon>
               <ListItemText primary="Rules" />
             </ListItem>
-            <ListItem button selected={value == 1}>
-              <ListItemIcon>
-                <SportsEsportsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Game" />
-            </ListItem>
+            <Link href="/game">
+              <ListItem button selected={value == 2}>
+                <ListItemIcon>
+                  <SportsEsportsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Game" />
+              </ListItem>
+            </Link>
             <ListItem button>
               <ListItemIcon>
                 <SchoolIcon />
