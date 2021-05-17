@@ -84,7 +84,8 @@ const Timer = () => {
 
                 strokeLinecap: "butt",
                 trailColor: "rgba(0 0 0 / 15%)",
-                pathColor: "#b6174b",
+                // pathColor: "#b6174b",
+                pathColor: "#e63946",
               })}
             >
               <Typography variant={mdBelow ? "body1" : "h3"}>
@@ -111,7 +112,8 @@ const Timer = () => {
               styles={buildStyles({
                 strokeLinecap: "butt",
                 trailColor: "rgba(0 0 0 / 15%)",
-                pathColor: "#c3eb78",
+                // pathColor: "#c3eb78",
+                pathColor: "#f1faee",
               })}
             >
               <Typography variant={mdBelow ? "body1" : "h3"}>
@@ -137,7 +139,8 @@ const Timer = () => {
                 textColor: "#ffff",
                 strokeLinecap: "butt",
                 trailColor: "rgba(0 0 0 / 15%)",
-                pathColor: "#61c9a8",
+                // pathColor: "#61c9a8",
+                pathColor: "#a8dadc",
               })}
             >
               <Typography variant={mdBelow ? "body1" : "h3"}>
@@ -163,7 +166,8 @@ const Timer = () => {
                 textColor: "#ffff",
                 strokeLinecap: "butt",
                 trailColor: "rgba(0 0 0 / 15%)",
-                pathColor: "#f3ffc6",
+                // pathColor: "#f3ffc6",
+                pathColor: "#457b9d",
               })}
             >
               <Typography variant={mdBelow ? "body1" : "h3"}>

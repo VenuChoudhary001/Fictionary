@@ -1,11 +1,13 @@
 import Layout from "../components/layout";
 import "../styles/globals.css";
-
+import { GlobalContextProvider } from "../components/context/context";
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <GlobalContextProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </GlobalContextProvider>
   );
 }
 

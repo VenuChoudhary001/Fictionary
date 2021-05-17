@@ -2,10 +2,15 @@ import { CssBaseline, makeStyles, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import Footer from "./footer";
 import Navbar from "./navbar";
-
+import GlobalContext, { GlobalContextProvider } from "./context/context";
 import Head from "next/head";
 import Theme from "./theme/theme";
+import Rules from "./rules";
+import { useRouter } from "next/router";
 function Layout({ children }) {
+  const getContext = React.useContext(GlobalContext);
+  const { open } = getContext;
+  const route = useRouter();
   return (
     <>
       <Head>
@@ -28,15 +33,25 @@ function Layout({ children }) {
       </Head>
       <CssBaseline />
       <div className="my-video">
-        <video autoPlay loop muted style={{ height: "900px" }}>
+        <video
+          autoPlay
+          loop
+          muted
+          style={{ opacity: `${route.pathname === "/login" ? "0.75" : "1"}` }}
+        >
           <source
-            src="/production Id 4112431 (Online-Video-Cutter.Com)-1.webm"
+            // src="/main.webm"
+            // src="/Face - 678.mp4"
+            // src="/Squares - 1200.mp4"
+            src="/Space - 5200.mp4"
+            // src="/Animation - 7529.mp4"
             type="video/webm"
           />
         </video>
       </div>
       <ThemeProvider theme={Theme}>
         <Navbar />
+        {open ? <Rules /> : ""}
 
         {children}
         <Footer />

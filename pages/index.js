@@ -14,6 +14,7 @@ import Timer from "../components/ui/timer";
 function Index() {
   const theme = useTheme();
   const mdBelow = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <>
       <Container className="my-4 py-4 ">
@@ -28,7 +29,7 @@ function Index() {
                 color: "#fff",
               }}
             >
-              <Zoom right cascade>
+              <Zoom left cascade>
                 FICTIONARY STARTS IN
               </Zoom>
             </Typography>
