@@ -26,7 +26,7 @@ const Timer = () => {
   const [loading, setLoading] = useState(true);
   const calculateTime = () => {
     const date = new Date();
-    const dDay = new Date("26 July 2021");
+    const dDay = new Date("26 March 2022");
     let dayCount = Math.floor((dDay - date) / (1000 * 24 * 60 * 60));
     let hrsCount = Math.floor(
       ((dDay - date) % (1000 * 24 * 60 * 60)) / (1000 * 60 * 60)
